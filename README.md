@@ -2,6 +2,9 @@
 
 **Disclaimer:** I originally wrote this guide in 2024 after spending nearly two days troubleshooting the Windows 11 installation on my ASUS TUF F15. I never got around to publishing it until now. Some details may be slightly outdated, but the core tips, tricks, and keyboard workarounds could still save you a massive headache. Hopefully someone still can find this useful.
 
+
+Also available on DEV Community [here](https://dev.to/lazlowcooper/how-i-finally-installed-win11-on-asus-tuf-f15-a-full-guide-for-anyone-struggling-with-installation-2lhb).
+
 ------------------------------------------------------------------------
 
 I would like to share my win11 installation journey with anyone who's interested, how I managed to complete the whole process from start to finish. There are many posts and sources available already, my goal was just to put them all together to give a concise overview from my perspective. Additionally, I bumped into numerous unexpected hurdles along the way, hopefully my experience, tips and tricks could be helpful, and may save some future frustration.
