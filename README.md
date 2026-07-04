@@ -105,7 +105,7 @@ At last, the 1TB SSD was recognized!
 
 ![Select location to install Win11 - success](images/Picture12.jpg)
 
-## **Additional issues - no network adapter driver, running out of USB ports**
+## **5. Additional issues - no network adapter driver, running out of USB ports**
 
 However, my adventures were not over at this point. I continued the installation, and later the installer requested a network adapter driver to be able to connect to my wifi. (There's no option to just skip this.)
 
