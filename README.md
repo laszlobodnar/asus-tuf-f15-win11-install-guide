@@ -26,7 +26,7 @@ As instructed by the ASUS TUF instruction manual, I charged the batteries for 3 
 
 (This is what most of the videos on youtube will tell you.) Pressed Save and exit (F10), machine restarted, Windows installer initialized, selected the language, entered license key etc. Then I arrived to this _Select location to install Win11_ window. As you can see, even after making all the modifications above in the Boot menu, Win11 installer still couldn't recognize my SSD drive, only the 8GB USB stick. It's clear from this error message as well. Clicking on _Show details_ it said: _"The selected disk has an MBR partition table. On EFI Systems, the operating system can only be installed on GPT disks. Setup doesn't support configuration of or installation to disks connected through a USB or IEEE1394 port."_
 
-![Select location to install Win11](https://dev-to-uploads.s3.us-east-2.amazonaws.com/uploads/articles/okcb0tkr6lthdfinf34t.png)
+![Select location to install Win11](images/Picture1.jpg)
 
 **Action 1. - using IRST driver from ASUS website**
 
@@ -35,15 +35,15 @@ After some research I found out that there is a [driver compatibility issue     
 I arrived again to the _Select location to install Win11_ window, where you can see the _Load driver_ option here:
 
 
-![Select location to install Win11 - Load driver](https://dev-to-uploads.s3.us-east-2.amazonaws.com/uploads/articles/jnb4npcv2p9quh7na792.png)
+![Select location to install Win11 - Load driver](images/Picture2.jpg)
 
 Selected the previously downloaded and extracted driver (RST_V19.1.0.1001_PV)
 
 
-![Install driver to show hardware - 01](https://dev-to-uploads.s3.us-east-2.amazonaws.com/uploads/articles/ai1438uht8sy8vg5k4qm.png)
+![Install driver to show hardware - 01](images/Picture3.jpg)
 
 
-![Install driver to show hardware - 02](https://dev-to-uploads.s3.us-east-2.amazonaws.com/uploads/articles/fgzv9o2eypqzmjr8euqk.png)
+![Install driver to show hardware - 02](images/Picture4.jpg)
 
 But still, no change. The installer couldn't recognize the SSD. 
 
@@ -60,13 +60,13 @@ Then I realized, based on [this reddit post](https://www.reddit.com/r/Asustuf/co
 a.) ...burnt it to the USB stick, set partition scheme to MBR and started the whole installation process all over again.
 
 
-![Rufus MBR](https://dev-to-uploads.s3.us-east-2.amazonaws.com/uploads/articles/qapbe89djwh5tpvaqxpc.png)
+![Rufus MBR](images/Picture5.jpg)
 
 Still, no change. The installer couldn't recognize the SSD.
 
 b.) ...burnt it to the USB stick, set partition scheme to GBT and started the whole installation process all over again.
 
-![Rufus GBT](https://dev-to-uploads.s3.us-east-2.amazonaws.com/uploads/articles/p8op4z619n3swkmhdzuf.png)
+![Rufus GBT](images/Picture6.jpg)
 
 Still, no change, except for the fact that the the error message now only showed this: _"Setup doesn't support configuration of or installation to disks connected through a USB or IEEE1394 port."_
 
@@ -76,73 +76,72 @@ But still, the problem persisted, the installer couldn't recognize the SSD.
 
 Remember I originally downloaded the IRST driver from ASUS's website? Then, inspired by [this reddit post](https://www.reddit.com/r/WindowsHelp/comments/19b8ov1/my_windows_11_installer_doesnt_detect_ssd/), I downloaded it from [Intel's website](https://www.intel.com/content/www/us/en/download/720755/intel-rapid-storage-technology-driver-installation-software-with-intel-optane-memory-11th-up-to-13th-gen-platforms.html). The issue here however was that this downloaded file is an executable .exe, which [the Windows installer cannot handle](https://www.reddit.com/r/intel/comments/1762sj6/intel_rst_vmd_driver_is_now_an_exe_and_not/). Trust me, I tried.
 
-![SetupRST](https://dev-to-uploads.s3.us-east-2.amazonaws.com/uploads/articles/p08lvrrs5b5z7jzcr3hn.png)
+![SetupRST](images/Picture7.jpg)
 
 What helped me was that I opened PowerShell, located the .exe file as suggested [in this post](https://www.reddit.com/r/intel/comments/1762sj6/intel_rst_vmd_driver_is_now_an_exe_and_not/), then I ran this code:
 `./SetupRST.exe -extractdrivers SetupRST_extracted`
 
-![PowerShell](https://dev-to-uploads.s3.us-east-2.amazonaws.com/uploads/articles/dv3gyto9c68tbw4eq1pc.png)
+![PowerShell](images/Picture8.jpg)
 
 So this basically **_extracted (not installed!)_** the contents of this .exe file into a separate folder, like so:
 
-![SetupRST_extracted](https://dev-to-uploads.s3.us-east-2.amazonaws.com/uploads/articles/3dyzo5p1w8hwwked8z4f.png)
+![SetupRST_extracted](images/Picture9.jpg)
 
 This I copied onto my USB stick and initialized the Windows installer process, again. Arrived to the _Select location to install Win11_ window where I clicked on _Load driver_, found the driver (I had to go way down to here):
 
-![Install driver to show hardware 3](https://dev-to-uploads.s3.us-east-2.amazonaws.com/uploads/articles/wjh6b6y5da518oaykekn.png)
+![Install driver to show hardware 3](images/Picture10.jpg)
 
 I selected _VMD controller_ (_not_ the VMD managed controller!).
 
 
-![VMD controller](https://dev-to-uploads.s3.us-east-2.amazonaws.com/uploads/articles/xs4sxbcpbvzjkehwr6rg.png)
+![VMD controller](images/Picture11.jpg)
 
 At last, the 1TB SSD was recognized!
 
 
-![Select location to install Win11 - success](https://dev-to-uploads.s3.us-east-2.amazonaws.com/uploads/articles/51y05uh8ifrp8ui6i9jd.png)
+![Select location to install Win11 - success](images/Picture12.jpg)
 
 **Additional issues - no network adapter driver, running out of USB ports**
 
 However, my adventures were not over at this point. I continued the installation, and later the installer requested a network adapter driver to be able to connect to my wifi. (There's no option to just skip this.)
 
 
-![Let's connect you to a network](https://dev-to-uploads.s3.us-east-2.amazonaws.com/uploads/articles/29b7jyy5qss88k0ps83o.png)
+![Let's connect you to a network](images/Picture13.jpg)
 
 So I researched, found this [ASUS website](https://www.asus.com/support/faq/1048624/) which proved to be helpful. I followed the instructions, downloaded [this driver](https://www.intel.com/content/www/us/en/download/727998/intel-network-adapter-driver-for-microsoft-windows-11.html) (Wired_driver_29.3_x64) from Intel's website, named _Intel® Network Adapter Driver for Microsoft* Windows* 11_:
 
-![Wired_driver_29.3_x64 - 01](https://dev-to-uploads.s3.us-east-2.amazonaws.com/uploads/articles/0nu2w0xf9a3qabpw8bdv.png)
+![Wired_driver_29.3_x64 - 01](images/Picture14.jpg)
 
 Extracted it, coped it to a second USB stick and inserted this into the 1 remaining USB port. Then, continued following the [ASUS website](https://www.asus.com/support/faq/1048624/) instructions: pressed SHIFT+F10 to open the command prompt. (You might need to press ALT+TAB couple of times, to make the window active, otherwise you won't be able to type! I couldn't use the mouse to click on the window since I ran out of available USB ports, the touchpad was inactive and I had no USB hubs.) Typed in `explorer.exe`. It opened the Windows Explorer, so I could find the installer using the TAB and arrowkeys:
 
 
-![Wired_driver_29.3_x64 - 02](https://dev-to-uploads.s3.us-east-2.amazonaws.com/uploads/articles/sxj1wf8glm2nttw8tjri.png)
+![Wired_driver_29.3_x64 - 02](images/Picture15.jpg)
 
 Unfortunately, it said _No Intel Network Connections found on this computer. No drivers were installed._
 
 
-![Wired_driver_29.3_x64 - 03](https://dev-to-uploads.s3.us-east-2.amazonaws.com/uploads/articles/txvhbz7df3tyvd0i04q8.png)
+![Wired_driver_29.3_x64 - 03](images/Picture16.jpg)
 
 So I continued researching, I found another driver from [Intel's website here](https://www.intel.com/content/www/us/en/download/19351/intel-wireless-wi-fi-drivers-for-windows-10-and-windows-11.html), called _Intel® Wireless Wi-Fi Drivers for Windows® 10 and Windows 11*_. I copied it to my second USB stick, inserted this into the remaining USB port. Then, similarly to before: pressed SHIFT+F10 to open the command prompt, ALT+TAB couple of times to make the window active, typed `explorer.exe`. It opened the Windows Explorer, so I could find the installer using the TAB and arrowkeys:
 
 
-![Intel Wireless Wi-Fi Drivers for Windows 10 and Windows 11 - 01](https://dev-to-uploads.s3.us-east-2.amazonaws.com/uploads/articles/n4wo3ycb098q41dmplkc.png)
+![Intel Wireless Wi-Fi Drivers for Windows 10 and Windows 11 - 01](images/Picture17.jpg)
 
 I opened it successfully, but then I bumped into a strange issue here at this point:
 
 
-![Intel Wireless Wi-Fi Drivers for Windows 10 and Windows 11 - 02](https://dev-to-uploads.s3.us-east-2.amazonaws.com/uploads/articles/qwucthovgp27q5lseg77.png)
+![Intel Wireless Wi-Fi Drivers for Windows 10 and Windows 11 - 02](images/Picture18.jpg)
 
 That is, I am supposed to click on Next, but how? There are only 2 USB ports on ASUS TUF F15 and as I said, I was already using both of them. I couldn't just plug them out obviously since that would crash the whole installation. No mouse, touchpad inactive.
 
 What helped me was (outside of going to the local electronics store to buy a USB hub), I had to press ALT or ALT+TAB multiple times, thus underscores appeared under cetain characters in the buttons. As you can see here, `N` in `Next` became underscored.
 
-
-![Intel Wireless Wi-Fi Drivers for Windows 10 and Windows 11 - 03](https://dev-to-uploads.s3.us-east-2.amazonaws.com/uploads/articles/rhusx2lc1ql2v9ujdhvu.png)
+![Intel Wireless Wi-Fi Drivers for Windows 10 and Windows 11 - 03](images/Picture19.jpg)
 
 By pressing N and applying this similar method in the following prompts, I could finally complete the Wireless Wi-Fi Driver installation.
 
 
-![Intel Wireless Wi-Fi Drivers for Windows 10 and Windows 11 - 04](https://dev-to-uploads.s3.us-east-2.amazonaws.com/uploads/articles/lp75ogkba7sh02h4g9dp.png)
+![Intel Wireless Wi-Fi Drivers for Windows 10 and Windows 11 - 04](images/Picture20.jpg)
 
 Pressing F (of **F**inish) in this last window didn't work, but it's not important since it's just a message of the completion. Pressing ALT+F4 closed this and the other open windows: the Wi-Fi Driver installer, the command prompt, the Windows explorer. At this point I just had to connect to my Wi-Fi, and that's it.
 
