@@ -31,7 +31,7 @@ As instructed by the ASUS TUF instruction manual, I charged the batteries for 3 
 
 ![Select location to install Win11](images/Picture1.jpg)
 
-**Action 1. - using IRST driver from ASUS website**
+## **Action 1. - using IRST driver from ASUS website**
 
 After some research I found out that there is a [driver compatibility issue     ](https://www.intel.com/content/www/us/en/support/articles/000092508/technologies.html)affecting these new generation Intel processors. So I followed the steps exactly as mentioned in [this ASUS video](https://www.youtube.com/watch?v=HuCY0ChsqAM), i.e. downloaded the IRST driver from [ASUS website](https://www.asus.com/supportonly/irst/helpdesk_download/) (RST_V19.1.0.1001_PV), extracted it, copied it to my USB stick (next to the Win11 installer files, into the USB stick's root directory) and restarted the whole installation process.
 
@@ -50,13 +50,13 @@ Selected the previously downloaded and extracted driver (RST_V19.1.0.1001_PV)
 
 But still, no change. The installer couldn't recognize the SSD. 
 
-**Action 2. - toggle VMD controller disabled/enabled**
+## **Action 2. - toggle VMD controller disabled/enabled**
 
 According to some sources, you have to go back to the Boot menu, go to Advanced mode (F7) / Advanced / VMD Setup Menu / Enable VMD controller and select _Disabled_, then _Enabled_ again (!). So I did, then I initiated the Windows installer again.
 
 Still, no change. The installer couldn't recognize the SSD.
 
-**Action 3. - burn ISO to USB stick using Rufus**
+## **Action 3. - burn ISO to USB stick using Rufus**
 
 Then I realized, based on [this reddit post](https://www.reddit.com/r/Asustuf/comments/1eofu2f/windows_installation_cannot_find_ssd_on_asus_tuf/), that maybe the way I created the USB stick (using the Media tool option) was wrong. User u/LuciaGiurato suggests trying to download the Win11 in iso format from the official Windows site, then burn this iso to the USB stick using Rufus. So I did. Downloaded the ISO file, then...
 
@@ -75,7 +75,7 @@ Still, no change, except for the fact that the the error message now only showed
 
 But still, the problem persisted, the installer couldn't recognize the SSD.
 
-**Action 4. - IRST driver from INTEL website**
+## **Action 4. - IRST driver from INTEL website**
 
 Remember I originally downloaded the IRST driver from ASUS's website? Then, inspired by [this reddit post](https://www.reddit.com/r/WindowsHelp/comments/19b8ov1/my_windows_11_installer_doesnt_detect_ssd/), I downloaded it from [Intel's website](https://www.intel.com/content/www/us/en/download/720755/intel-rapid-storage-technology-driver-installation-software-with-intel-optane-memory-11th-up-to-13th-gen-platforms.html). The issue here however was that this downloaded file is an executable `.exe`, which [the Windows installer cannot handle](https://www.reddit.com/r/intel/comments/1762sj6/intel_rst_vmd_driver_is_now_an_exe_and_not/). Trust me, I tried.
 
@@ -105,7 +105,7 @@ At last, the 1TB SSD was recognized!
 
 ![Select location to install Win11 - success](images/Picture12.jpg)
 
-**Additional issues - no network adapter driver, running out of USB ports**
+## **Additional issues - no network adapter driver, running out of USB ports**
 
 However, my adventures were not over at this point. I continued the installation, and later the installer requested a network adapter driver to be able to connect to my wifi. (There's no option to just skip this.)
 
