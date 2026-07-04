@@ -79,6 +79,7 @@ Remember I originally downloaded the IRST driver from ASUS's website? Then, insp
 ![SetupRST](images/Picture7.jpg)
 
 What helped me was that I opened PowerShell, located the .exe file as suggested [in this post](https://www.reddit.com/r/intel/comments/1762sj6/intel_rst_vmd_driver_is_now_an_exe_and_not/), then I ran this code:
+
 `./SetupRST.exe -extractdrivers SetupRST_extracted`
 
 ![PowerShell](images/Picture8.jpg)
