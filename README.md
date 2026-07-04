@@ -138,7 +138,7 @@ I opened it successfully, but then I bumped into a strange issue here at this po
 
 That is, I am supposed to click on Next, but how? There are only 2 USB ports on ASUS TUF F15 and as I said, I was already using both of them. I couldn't just plug them out obviously since that would crash the whole installation. No mouse, touchpad inactive.
 
-What helped me was (outside of going to the local electronics store to buy a USB hub), I had to press ALT or ALT+TAB multiple times, thus underscores appeared under cetain characters in the buttons. As you can see here, `N` in `Next` became underscored.
+What helped me was (outside of going to the local electronics store to buy a USB hub), I had to press ALT or ALT+TAB multiple times, thus underlines appeared under cetain characters in the buttons. As you can see here, `N` in `Next` became underlined.
 
 ![Intel Wireless Wi-Fi Drivers for Windows 10 and Windows 11 - 03](images/Picture19.jpg)
 
