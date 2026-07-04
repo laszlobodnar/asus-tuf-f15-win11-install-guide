@@ -74,7 +74,7 @@ But still, the problem persisted, the installer couldn't recognize the SSD.
 
 **Action 4. - IRST driver from INTEL website**
 
-Remember I originally downloaded the IRST driver from ASUS's website? Then, inspired by [this reddit post](https://www.reddit.com/r/WindowsHelp/comments/19b8ov1/my_windows_11_installer_doesnt_detect_ssd/), I downloaded it from [Intel's website](https://www.intel.com/content/www/us/en/download/720755/intel-rapid-storage-technology-driver-installation-software-with-intel-optane-memory-11th-up-to-13th-gen-platforms.html). The issue here however was that this downloaded file is an executable .exe, which [the Windows installer cannot handle](https://www.reddit.com/r/intel/comments/1762sj6/intel_rst_vmd_driver_is_now_an_exe_and_not/). Trust me, I tried.
+Remember I originally downloaded the IRST driver from ASUS's website? Then, inspired by [this reddit post](https://www.reddit.com/r/WindowsHelp/comments/19b8ov1/my_windows_11_installer_doesnt_detect_ssd/), I downloaded it from [Intel's website](https://www.intel.com/content/www/us/en/download/720755/intel-rapid-storage-technology-driver-installation-software-with-intel-optane-memory-11th-up-to-13th-gen-platforms.html). The issue here however was that this downloaded file is an executable `.exe`, which [the Windows installer cannot handle](https://www.reddit.com/r/intel/comments/1762sj6/intel_rst_vmd_driver_is_now_an_exe_and_not/). Trust me, I tried.
 
 ![SetupRST](images/Picture7.jpg)
 
